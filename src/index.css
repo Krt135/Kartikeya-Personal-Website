@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: #c9a24a;
+  color: #0e1116;
+}
+
+body {
+  background-color: #f6f4ee;
+  background-image: radial-gradient(circle at 1px 1px, rgba(14, 17, 22, 0.06) 1px, transparent 0);
+  background-size: 28px 28px;
+}
+
+.eyebrow {
+  @apply font-mono text-[11px] tracking-[0.25em] uppercase text-ink/50;
+}
+
+.rule {
+  @apply border-t border-ink/10;
+}
+
+.focus-ring {
+  @apply outline-none focus-visible:ring-2 focus-visible:ring-moss focus-visible:ring-offset-2 focus-visible:ring-offset-paper rounded-sm;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
