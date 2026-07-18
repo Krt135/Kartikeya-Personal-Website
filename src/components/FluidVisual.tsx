@@ -154,14 +154,27 @@ export default function FluidVisual() {
   return (
     <div className="relative rounded-md border border-ink/15 bg-ink/[0.02] overflow-hidden">
       <div className="flex items-center justify-between px-4 pt-3 font-mono text-[11px] tracking-wide text-ink/50">
-        <span>SPH · interactive</span>
+        <span className="flex items-center gap-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-moss" />
+          SPH · interactive
+        </span>
         <span>240 particles</span>
       </div>
-      <canvas
-        ref={canvasRef}
-        className="w-full h-[220px] sm:h-[260px] touch-none cursor-crosshair"
-        aria-hidden="true"
-      />
+      <div className="relative">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-[70%]"
+          style={{
+            background:
+              "radial-gradient(60% 100% at 50% 100%, rgba(60,110,82,0.22) 0%, rgba(60,110,82,0.08) 45%, transparent 75%)",
+          }}
+        />
+        <canvas
+          ref={canvasRef}
+          className="relative w-full h-[220px] sm:h-[260px] touch-none cursor-crosshair"
+          aria-hidden="true"
+        />
+      </div>
       <div className="flex items-center justify-between px-4 pb-3 font-mono text-[11px] text-ink/40">
         <span>drag &amp; move — density-based pressure with sub-stepped integration</span>
         <span>∇·v ≈ 0</span>

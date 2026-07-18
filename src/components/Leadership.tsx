@@ -32,7 +32,7 @@ export default function Leadership() {
                       key={b}
                       className="flex gap-3 text-[14px] text-ink/75 leading-snug"
                     >
-                      <span className="text-rust mt-[3px] font-mono">→</span>
+                      <span className="text-rust mt-[1px] font-mono text-[13px]">↗</span>
                       <span>{b}</span>
                     </li>
                   ))}

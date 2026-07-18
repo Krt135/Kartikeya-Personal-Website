@@ -6,8 +6,9 @@ export default function Header() {
       <div className="mx-auto max-w-content px-6 h-16 flex items-center justify-between">
         <a
           href="#top"
-          className="font-display text-lg tracking-tight focus-ring"
+          className="font-display text-lg tracking-tight focus-ring flex items-center gap-2"
         >
+          <span className="w-2 h-2 rounded-full bg-moss" />
           {site.name}
         </a>
 
@@ -34,8 +35,11 @@ export default function Header() {
           </a>
           <a
             href={site.cvUrl}
-            className="inline-flex items-center rounded-sm border border-ink/20 px-3 py-1.5 hover:border-ink hover:bg-ink hover:text-paper transition-colors focus-ring"
+            className="inline-flex items-center gap-1.5 rounded-full bg-moss text-paper px-3.5 py-1.5 hover:bg-ink transition-colors focus-ring"
           >
+            <svg viewBox="0 0 24 24" className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 3v13m0 0-4-4m4 4 4-4M5 19h14" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
             CV
           </a>
         </div>

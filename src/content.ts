@@ -16,7 +16,12 @@ export const site = {
 
 export const hero = {
   eyebrow: "Portfolio · 2026",
-  headline: ["Building systems,", "analyzing markets,", "and capturing perspective."],
+  // Each line: [plain prefix, italic accent word, plain suffix]
+  headline: [
+    ["Building ", "systems", ","],
+    ["analyzing ", "markets", ","],
+    ["and capturing ", "perspective", "."],
+  ],
   subhead:
     "Student Developer & Economist · Published Poet · Community Leader. Working at the intersection of computer science, economics, and creative arts — from fluid simulators to the pages of Folio.",
   ctaPrimary: { label: "Explore the work", href: "#systems" },

@@ -5,14 +5,19 @@ export default function Hero() {
   return (
     <section id="top" className="pt-32 pb-20 md:pt-40 md:pb-28">
       <div className="mx-auto max-w-content px-6">
-        <p className="eyebrow mb-6">{hero.eyebrow}</p>
+        <p className="eyebrow mb-6 flex items-center gap-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-moss" />
+          {hero.eyebrow}
+        </p>
 
         <div className="grid md:grid-cols-[1.15fr_0.85fr] gap-14 items-end">
           <div>
             <h1 className="font-display font-medium text-[13vw] leading-[0.98] sm:text-6xl md:text-6xl lg:text-7xl tracking-tight">
-              {hero.headline.map((line, i) => (
+              {hero.headline.map(([prefix, accent, suffix], i) => (
                 <span key={i} className="block">
-                  {line}
+                  {prefix}
+                  <em className="text-moss italic font-normal">{accent}</em>
+                  {suffix}
                 </span>
               ))}
             </h1>
