@@ -1,22 +1,458 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kartikeya Pant — Systems, Markets & Perspective</title>
-    <meta
-      name="description"
-      content="Portfolio of Kartikeya Pant — student developer and economist building physics simulators, games, and community; published poet and photographer."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body class="bg-paper text-ink font-body antialiased">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kartikeya Pant — Systems, Markets &amp; Perspective</title>
+  <meta
+    name="description"
+    content="Portfolio of Kartikeya Pant — student developer and economist building physics simulators, games, and community; published poet and photographer."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="wrap">
+      <a href="#top" class="logo">
+        <span class="dot"></span>
+        Kartikeya Pant
+      </a>
+
+      <nav class="nav-links">
+        <a href="#systems">Systems</a>
+        <a href="#lead">Leadership</a>
+        <a href="#gallery">Gallery</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="link-github" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="btn-cv" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 3v13m0 0-4-4m4 4 4-4M5 19h14" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          CV
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ================= HERO ================= -->
+    <section id="top" class="hero">
+      <div class="wrap">
+        <p class="eyebrow hero-eyebrow">
+          <span class="dot dot-sm"></span>
+          Portfolio · 2026
+        </p>
+
+        <div class="hero-grid">
+          <div>
+            <h1 class="hero-headline">
+              <span>Building <em>systems</em>,</span>
+              <span>analyzing <em>markets</em>,</span>
+              <span>and capturing <em>perspective</em>.</span>
+            </h1>
+
+            <p class="hero-sub">
+              Student Developer &amp; Economist · Published Poet · Community Leader.
+              Working at the intersection of computer science, economics, and
+              creative arts — from fluid simulators to the pages of Folio.
+            </p>
+
+            <div class="hero-ctas">
+              <a href="#systems" class="btn btn-primary">Explore the work</a>
+              <a href="#gallery" class="btn btn-secondary">Read the poetry</a>
+            </div>
+
+            <dl class="hero-stats">
+              <div>
+                <dt class="eyebrow">Fields</dt>
+                <dd>03</dd>
+              </div>
+              <div>
+                <dt class="eyebrow">Projects</dt>
+                <dd>12+</dd>
+              </div>
+              <div>
+                <dt class="eyebrow">Published</dt>
+                <dd>Folio</dd>
+              </div>
+            </dl>
+          </div>
+
+          <!-- SPH interactive visual -->
+          <div class="fluid-panel">
+            <div class="fluid-panel-head">
+              <span><span class="dot dot-sm"></span> SPH · interactive</span>
+              <span>240 particles</span>
+            </div>
+            <div class="fluid-canvas-wrap">
+              <div class="fluid-glow" aria-hidden="true"></div>
+              <canvas id="fluid-canvas" aria-hidden="true"></canvas>
+            </div>
+            <div class="fluid-panel-foot">
+              <span>drag &amp; move — density-based pressure with sub-stepped integration</span>
+              <span>∇·v ≈ 0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SYSTEMS ================= -->
+    <section id="systems" class="section systems rule">
+      <div class="wrap">
+        <p class="eyebrow">01 · Code &amp; Systems</p>
+        <h2 class="section-heading">Engineered for physics, tuned for play.</h2>
+        <p class="section-intro">
+          Two projects at opposite ends of the systems spectrum — one obeys
+          Navier-Stokes, the other bends probability.
+        </p>
+
+        <div class="project-list">
+
+          <!-- Project 1 -->
+          <article class="project">
+            <div>
+              <div class="project-meta">
+                <span class="badge">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <circle cx="12" cy="12" r="3" />
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                  </svg>
+                  Simulation
+                </span>
+                <span class="project-tags">C++ · OpenGL · Physics</span>
+              </div>
+              <h3>SPH Fluid Simulator</h3>
+              <p class="desc">
+                A smoothed-particle hydrodynamics engine solving incompressible
+                flow with the Poly6/Spiky kernel family. Sub-stepped
+                semi-implicit integration keeps the fluid stable at high
+                particle counts; spatial hashing makes neighbor queries linear
+                in practice.
+              </p>
+              <ul class="bullets dash">
+                <li>Poly6 density + Spiky pressure gradient kernels</li>
+                <li>Sub-stepping (4×) at 60fps for stability under stiff pressure</li>
+                <li>Uniform grid neighbor search, O(n) in average case</li>
+                <li>GPU-accelerated rendering with screen-space blur</li>
+              </ul>
+              <div class="pills">
+                <span class="pill">C++</span>
+                <span class="pill">GLSL</span>
+                <span class="pill">SPH</span>
+                <span class="pill">Sub-stepping</span>
+              </div>
+            </div>
+
+            <div class="code-panel">
+              <div class="code-panel-head">
+                <span class="code-panel-dots"><span></span><span></span><span></span></span>
+                <span>solver.cpp</span>
+              </div>
+              <pre><code>// Poly6 kernel (density)
+float W(float r, float h) {
+  if (r &gt;= h) return 0.f;
+  float x = h*h - r*r;
+  return 315.f/(64.f*PI*pow(h,9)) * x*x*x;
+}
+
+// Semi-implicit Euler with sub-steps
+for (int s = 0; s &lt; SUBSTEPS; ++s) {
+  computeDensityPressure();
+  computeForces();     // pressure + viscosity + gravity
+  integrate(dt / SUBSTEPS);
+}</code></pre>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project">
+            <div>
+              <div class="project-meta">
+                <span class="badge">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="3" y="3" width="18" height="18" rx="3" />
+                    <circle cx="8" cy="8" r="1.1" fill="currentColor" stroke="none" />
+                    <circle cx="16" cy="8" r="1.1" fill="currentColor" stroke="none" />
+                    <circle cx="8" cy="16" r="1.1" fill="currentColor" stroke="none" />
+                    <circle cx="16" cy="16" r="1.1" fill="currentColor" stroke="none" />
+                    <circle cx="12" cy="12" r="1.1" fill="currentColor" stroke="none" />
+                  </svg>
+                  Game
+                </span>
+                <span class="project-tags">Unity · C# · Deterministic</span>
+              </div>
+              <h3>Loaded Dice</h3>
+              <p class="desc">
+                A tactical roguelike where every roll is weighted, biased, and
+                replayable. Built on a small, clean C# architecture: interfaces
+                separate the RNG bus, dice sets, and effect resolvers so
+                behavior stays testable and expansions stay cheap.
+              </p>
+              <ul class="bullets dash">
+                <li>Interface-driven core with seedable deterministic RNG</li>
+                <li>Weighted-sample dice service; effects resolve via visitor</li>
+                <li>ScriptableObject-authored content with hot-reload in editor</li>
+                <li>Full replay from seed + input log for debugging</li>
+              </ul>
+              <div class="pills">
+                <span class="pill">Unity</span>
+                <span class="pill">C#</span>
+                <span class="pill">DI</span>
+                <span class="pill">ScriptableObject</span>
+              </div>
+            </div>
+
+            <div class="code-panel">
+              <div class="code-panel-head">
+                <span class="code-panel-dots"><span></span><span></span><span></span></span>
+                <span>RollService.cs</span>
+              </div>
+              <pre><code>// Loaded Dice — deterministic RNG bus
+public interface IRollService {
+    RollResult Roll(DiceSet set, LoadProfile load);
+}
+
+public sealed class RollService : IRollService {
+    private readonly IRandom _rng;
+    public RollResult Roll(DiceSet set, LoadProfile load) =&gt;
+        set.Faces
+           .WeightedSample(_rng, load.Weights)
+           .Compose();
+}</code></pre>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LEADERSHIP ================= -->
+    <section id="lead" class="section leadership rule">
+      <div class="wrap">
+        <p class="eyebrow">02 · Build &amp; Lead</p>
+        <h2 class="section-heading">Web infrastructure as the shape of a community.</h2>
+        <p class="section-intro">
+          I built the digital homes for two of my school's largest student
+          organizations — the platforms that turn scattered members into a
+          working culture.
+        </p>
+
+        <div class="role-list">
+
+          <!-- Role 1 -->
+          <article class="role">
+            <div class="role-copy">
+              <span class="role-kicker">President · Computer Science Club</span>
+              <h3>A hub for builders.</h3>
+              <p class="desc">
+                Redesigned the club's site into a persistent home for
+                tutorials, project logs, and weekly hack-nights. Mentored a
+                rotating cadre of underclassmen, standing up a code-review
+                workflow so first-time contributors ship real features by
+                their second meeting.
+              </p>
+              <ul class="bullets arrow">
+                <li>Grew active membership 3× across two years</li>
+                <li>Ran 20+ workshops on systems, ML, and web infra</li>
+                <li>Established mentorship pipeline for 12 junior members</li>
+                <li>Sponsored two regional hackathon teams to placements</li>
+              </ul>
+            </div>
+
+            <div class="role-panel">
+              <div class="role-panel-head">
+                <span>csclub.school.edu</span>
+                <span>CS Club · Spring</span>
+              </div>
+              <p class="role-panel-sub">Build weird things. Ship on Fridays.</p>
+              <div class="role-panel-tags">
+                <span class="pill">Hack-night</span>
+                <span class="pill">Mentorship</span>
+              </div>
+              <div class="tracks">
+                <div class="track">
+                  <p class="eyebrow">Track</p>
+                  <strong>Rust</strong>
+                </div>
+                <div class="track">
+                  <p class="eyebrow">Track</p>
+                  <strong>OS</strong>
+                </div>
+                <div class="track">
+                  <p class="eyebrow">Track</p>
+                  <strong>Web</strong>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Role 2 -->
+          <article class="role reverse">
+            <div class="role-copy">
+              <span class="role-kicker">VP · Economics Club</span>
+              <h3>Markets, made legible.</h3>
+              <p class="desc">
+                Reframed the club around weekly market briefings, a
+                student-run macro newsletter, and simulated portfolio
+                competitions. The website became the operational core — event
+                calendar, reading list, and archive of member analyses — all
+                in one crisp, editorial layout.
+              </p>
+              <ul class="bullets arrow">
+                <li>Launched a bi-weekly student macro newsletter (~400 readers)</li>
+                <li>Organized inter-school portfolio competition, 6 schools</li>
+                <li>Built research reading-list system with 60+ curated papers</li>
+                <li>Coached debate &amp; speech teams to state-level qualifiers</li>
+              </ul>
+            </div>
+
+            <div class="role-panel">
+              <div class="role-panel-head">
+                <span>econclub.school.edu</span>
+                <span>Weekly brief · Vol. 14</span>
+              </div>
+              <p class="role-panel-sub">Rates, curves, and stories.</p>
+              <div class="role-panel-tags">
+                <span class="pill">+2.14% ▲</span>
+              </div>
+              <dl class="role-stats">
+                <div>
+                  <dt class="eyebrow">Members</dt>
+                  <dd>180+</dd>
+                </div>
+                <div>
+                  <dt class="eyebrow">Papers</dt>
+                  <dd>60</dd>
+                </div>
+                <div>
+                  <dt class="eyebrow">Schools</dt>
+                  <dd>06</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= GALLERY ================= -->
+    <section id="gallery" class="section rule">
+      <div class="wrap">
+        <p class="eyebrow">03 · The Gallery</p>
+        <h2 class="section-heading">A quieter register.</h2>
+        <p class="section-intro">
+          Published poetry in <em>Folio Magazine</em>, and photography
+          submitted to the Tom Kean Jr. Art Competition.
+        </p>
+
+        <div class="gallery-grid">
+          <div>
+            <span class="quote-mark">&ldquo;</span>
+            <blockquote class="poem">
+              <p>
+                <span>And still, the ledger of small hours —</span>
+                <span>a market of moths against the lamp,</span>
+                <span>each wing a currency of light,</span>
+                <span>spent, and spent again.</span>
+              </p>
+              <footer>
+                <span>Kartikeya Pant</span>
+                <span class="divider">·</span>
+                <span class="source">Folio Magazine, Vol. VII</span>
+                <span class="poem-date">Published · 2025</span>
+              </footer>
+            </blockquote>
+          </div>
+
+          <div class="plates">
+            <figure class="plate tall">
+              <img src="assets/gallery-1.jpg" alt="Silhouette against foggy window" loading="lazy" />
+              <figcaption class="plate-caption">
+                <p class="plate-num">Plate 01</p>
+                <p class="plate-title">Night, in transit</p>
+              </figcaption>
+            </figure>
+            <figure class="plate">
+              <img src="assets/gallery-2.jpg" alt="Rain on glass with neon bokeh" loading="lazy" />
+              <figcaption class="plate-caption">
+                <p class="plate-num">Plate 02</p>
+                <p class="plate-title">Neon after rain</p>
+              </figcaption>
+            </figure>
+            <figure class="plate">
+              <img src="assets/gallery-3.jpg" alt="Minimalist staircase in shadow" loading="lazy" />
+              <figcaption class="plate-caption">
+                <p class="plate-num">Plate 03</p>
+                <p class="plate-title">Ascent</p>
+              </figcaption>
+            </figure>
+            <figure class="plate wide">
+              <img src="assets/gallery-4.jpg" alt="Dried leaves still life" loading="lazy" />
+              <figcaption class="plate-caption">
+                <p class="plate-num">Plate 04</p>
+                <p class="plate-title">Autumn, arranged</p>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer rule">
+    <div class="wrap footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="logo">
+          <span class="dot"></span>
+          Kartikeya Pant
+        </a>
+        <p class="tagline">Systems, markets, and the perspective in between.</p>
+      </div>
+
+      <div class="footer-col">
+        <p class="eyebrow">Elsewhere</p>
+        <ul>
+          <li><a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="mailto:hello@example.com">Email</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <p class="eyebrow">Sections</p>
+        <ul>
+          <li><a href="#systems">Systems</a></li>
+          <li><a href="#lead">Leadership</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+        </ul>
+        <p class="eyebrow">Résumé</p>
+        <ul>
+          <li><a href="#">Download CV</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="wrap footer-bottom">
+      <span>© 2026 Kartikeya Pant. All rights reserved.</span>
+      <span>crafted with care</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>
