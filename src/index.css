@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-background: oklch(16% 0.015 250);
+  --color-foreground: oklch(98% 0.005 250);
+  --color-primary: oklch(85% 0.16 195);
+  --color-muted: oklch(26% 0.02 250);
+  --color-muted-foreground: oklch(72% 0.02 250);
+  --color-border: oklch(30% 0.02 250);
+  --color-card: oklch(20% 0.018 250);
+  --color-card-foreground: oklch(98% 0.005 250);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  ::selection {
+    background: color-mix(in oklch, var(--color-primary) 30%, transparent);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-serif-accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  .text-gradient-primary {
+    color: var(--color-primary);
+  }
+
+  .glass-card {
+    background: color-mix(in oklch, var(--color-card) 85%, transparent);
+    border: 1px solid color-mix(in oklch, var(--color-border) 80%, transparent);
+    backdrop-filter: blur(12px);
+  }
+}
