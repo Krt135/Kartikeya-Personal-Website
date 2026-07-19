@@ -129,3 +129,47 @@
 
   step();
 })();
+
+(function () {
+  const wrap = document.querySelector(".sim-embed");
+  const frame = document.querySelector(".sim-embed-frame");
+  if (!wrap || !frame) return;
+
+  const NATIVE_W = 1600;
+  const NATIVE_H = 900;
+
+  // Set directly as inline styles, not a CSS class — so the reveal never
+  // depends on the external stylesheet being loaded/reloaded at the right
+  // moment.
+  frame.style.transformOrigin = "center center";
+  frame.style.opacity = "0";
+  frame.style.transition = "opacity 0.4s ease";
+
+  function fit() {
+    const w = wrap.clientWidth;
+    const h = wrap.clientHeight;
+    // Guard: never apply a scale computed from a transient/collapsed 0 size.
+    if (!w || !h) return;
+    const scale = Math.min(w / NATIVE_W, h / NATIVE_H);
+    if (scale > 0) {
+      frame.style.transform = `scale(${scale})`;
+    }
+  }
+
+  function reveal() {
+    frame.style.opacity = "1";
+  }
+
+  fit();
+  window.addEventListener("resize", fit);
+  if (window.ResizeObserver) {
+    new ResizeObserver(fit).observe(wrap);
+  }
+
+  frame.addEventListener("load", () => setTimeout(reveal, 350));
+
+  // Safety net — self-heals if the load event gets missed or something
+  // (dev-server HMR, a stray reflow) resets things after the fact.
+  setTimeout(() => { fit(); reveal(); }, 1000);
+  setInterval(fit, 1000);
+})();
