@@ -155,22 +155,17 @@
               </div>
             </div>
 
-<div class="code-panel">
-  <div class="code-panel-head">
-    <span class="code-panel-dots"><span></span><span></span><span></span></span>
-    <span>fluid_sim.html</span>
-  </div>
-  <div class="sim-embed">
-    <iframe
-      class="sim-embed-frame"
-      src="https://krt135.github.io/Fluid-Simulator/"
-      title="SPH Fluid Simulator by Krt135"
-      width="1600"
-      height="900"
-      scrolling="no"
-    ></iframe>
-  </div>
-</div>
+            <div class="code-panel">
+              <div class="code-panel-head">
+                <span class="code-panel-dots"><span></span><span></span><span></span></span>
+                <span>fluid_sim.html</span>
+              </div>
+              <div class="sim-embed">
+                <div class="sim-debug" id="sim-debug">init…</div>
+                <iframe class="sim-embed-frame" src="https://krt135.github.io/Fluid-Simulator/"
+                  title="SPH Fluid Simulator by Krt135" width="1600" height="900" scrolling="no"></iframe>
+              </div>
+            </div>
           </article>
 
           <!-- Project 2 -->
@@ -346,67 +341,139 @@ public sealed class RollService : IRollService {
     </section>
 
     <!-- ================= GALLERY ================= -->
-    <section id="gallery" class="section rule">
-      <div class="wrap">
-        <p class="eyebrow">03 · The Gallery</p>
-        <h2 class="section-heading">A quieter register.</h2>
-        <p class="section-intro">
-          Published poetry in <em>Folio Magazine</em>, and photography
-          submitted to the Tom Kean Jr. Art Competition.
-        </p>
+<section id="gallery" class="section rule">
+  <div class="wrap">
+    <p class="eyebrow">03 · The Gallery</p>
+    <h2 class="section-heading">A quieter register.</h2>
+    <p class="section-intro">
+      Published poetry in <em>Folio Magazine</em>, and photography
+      submitted to the Tom Kean Jr. Art Competition.
+    </p>
 
-        <div class="gallery-grid">
-          <div>
-            <span class="quote-mark">&ldquo;</span>
-            <blockquote class="poem">
-              <p>
-                <span>And still, the ledger of small hours —</span>
-                <span>a market of moths against the lamp,</span>
-                <span>each wing a currency of light,</span>
-                <span>spent, and spent again.</span>
-              </p>
-              <footer>
-                <span>Kartikeya Pant</span>
-                <span class="divider">·</span>
-                <span class="source">Folio Magazine, Vol. VII</span>
-                <span class="poem-date">Published · 2025</span>
-              </footer>
-            </blockquote>
-          </div>
+    <div class="gallery-grid">
+      <div class="gallery-poems">
 
-          <div class="plates">
-            <figure class="plate tall">
-              <img src="assets/gallery-1.jpg" alt="Silhouette against foggy window" loading="lazy" />
-              <figcaption class="plate-caption">
-                <p class="plate-num">Plate 01</p>
-                <p class="plate-title">Night, in transit</p>
-              </figcaption>
-            </figure>
-            <figure class="plate">
-              <img src="assets/gallery-2.jpg" alt="Rain on glass with neon bokeh" loading="lazy" />
-              <figcaption class="plate-caption">
-                <p class="plate-num">Plate 02</p>
-                <p class="plate-title">Neon after rain</p>
-              </figcaption>
-            </figure>
-            <figure class="plate">
-              <img src="assets/gallery-3.jpg" alt="Minimalist staircase in shadow" loading="lazy" />
-              <figcaption class="plate-caption">
-                <p class="plate-num">Plate 03</p>
-                <p class="plate-title">Ascent</p>
-              </figcaption>
-            </figure>
-            <figure class="plate wide">
-              <img src="assets/gallery-4.jpg" alt="Dried leaves still life" loading="lazy" />
-              <figcaption class="plate-caption">
-                <p class="plate-num">Plate 04</p>
-                <p class="plate-title">Autumn, arranged</p>
-              </figcaption>
-            </figure>
-          </div>
-        </div>
+        <article class="poem-card" tabindex="0" role="button" aria-haspopup="dialog" data-modal-target="poem-1">
+          <span class="quote-mark">&ldquo;</span>
+          <blockquote class="poem">
+            <p>
+              <span>And still, the ledger of small hours —</span>
+              <span>a market of moths against the lamp,</span>
+              <span>each wing a currency of light,</span>
+              <span>spent, and spent again.</span>
+            </p>
+            <footer>
+              <span>Kartikeya Pant</span>
+              <span class="divider">·</span>
+              <span class="source">Folio Magazine, Vol. VII</span>
+              <span class="poem-date">Published · 2025</span>
+            </footer>
+          </blockquote>
+          <span class="read-more">Read full poem →</span>
+        </article>
+
+        <article class="poem-card" tabindex="0" role="button" aria-haspopup="dialog" data-modal-target="poem-2">
+          <span class="quote-mark">&ldquo;</span>
+          <blockquote class="poem">
+            <p>
+              <span>And still, the ledger of small hours —</span>
+              <span>a market of moths against the lamp,</span>
+              <span>each wing a currency of light,</span>
+              <span>spent, and spent again.</span>
+            </p>
+            <footer>
+              <span>Kartikeya Pant</span>
+              <span class="divider">·</span>
+              <span class="source">Folio Magazine, Vol. VII</span>
+              <span class="poem-date">Published · 2025</span>
+            </footer>
+          </blockquote>
+          <span class="read-more">Read full poem →</span>
+        </article>
+
       </div>
-    </section>
+
+      <div class="plates">
+        <figure class="plate" tabindex="0" role="button" aria-haspopup="dialog"
+          data-modal-img="assets/comp-photo-1.jpg" data-modal-caption="Plate 01 · Night, in reflection">
+          <img src="assets/comp-photo-1.jpg" alt="Silhouette against foggy window" loading="lazy" />
+          <figcaption class="plate-caption">
+            <p class="plate-num">Plate 01</p>
+            <p class="plate-title">Night, in reflection</p>
+          </figcaption>
+        </figure>
+        <figure class="plate" tabindex="0" role="button" aria-haspopup="dialog"
+          data-modal-img="assets/comp-photo-2.jpg" data-modal-caption="Plate 02 · Streets at dusk">
+          <img src="assets/comp-photo-2.jpg" alt="Rain on glass with neon bokeh" loading="lazy" />
+          <figcaption class="plate-caption">
+            <p class="plate-num">Plate 02</p>
+            <p class="plate-title">Streets at dusk</p>
+          </figcaption>
+        </figure>
+        <figure class="plate" tabindex="0" role="button" aria-haspopup="dialog"
+          data-modal-img="assets/comp-photo-3.jpg" data-modal-caption="Plate 03 · Ascent">
+          <img src="assets/comp-photo-3.jpg" alt="Minimalist staircase in shadow" loading="lazy" />
+          <figcaption class="plate-caption">
+            <p class="plate-num">Plate 03</p>
+            <p class="plate-title">Ascent</p>
+          </figcaption>
+        </figure>
+        <figure class="plate" tabindex="0" role="button" aria-haspopup="dialog"
+          data-modal-img="assets/comp-photo-4.jpg" data-modal-caption="Plate 04 · Autumn, arranged">
+          <img src="assets/comp-photo-4.jpg" alt="Dried leaves still life" loading="lazy" />
+          <figcaption class="plate-caption">
+            <p class="plate-num">Plate 04</p>
+            <p class="plate-title">Autumn, arranged</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Hidden full-length poem content — one <template> per poem-card, matched by data-modal-target -->
+<template id="poem-1-full">
+  <span class="quote-mark">&ldquo;</span>
+  <p class="modal-poem-text">And still, the ledger of small hours —
+a market of moths against the lamp,
+each wing a currency of light,
+spent, and spent again.
+
+<!-- Replace this whole block with your real, full-length poem. Each blank
+     line becomes a stanza break automatically. -->
+  </p>
+  <footer class="modal-poem-footer">
+    <span>Kartikeya Pant</span>
+    <span class="divider">·</span>
+    <span>Folio Magazine, Vol. VII</span>
+    <span class="poem-date">Published · 2025</span>
+  </footer>
+</template>
+
+<template id="poem-2-full">
+  <span class="quote-mark">&ldquo;</span>
+  <p class="modal-poem-text">And still, the ledger of small hours —
+a market of moths against the lamp,
+each wing a currency of light,
+spent, and spent again.
+
+<!-- Replace this whole block with your second poem's full text. -->
+  </p>
+  <footer class="modal-poem-footer">
+    <span>Kartikeya Pant</span>
+    <span class="divider">·</span>
+    <span>Folio Magazine, Vol. VII</span>
+    <span class="poem-date">Published · 2025</span>
+  </footer>
+</template>
+
+<!-- Modal (shared by images and poems) -->
+<div class="modal-overlay" id="modal-overlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
 
   </main>
 

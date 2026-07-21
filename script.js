@@ -7,7 +7,7 @@
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
   const COUNT = 90;
-  
+
   // Particles start uninitialized until a real size is found
   const particles = Array.from({ length: COUNT }, () => ({ x: 0, y: 0, vx: 0, vy: 0 }));
 
@@ -145,19 +145,38 @@
   frame.style.opacity = "0";
   frame.style.transition = "opacity 0.4s ease";
 
+  // ---- on-page debug readout (no DevTools required to see it) ----------
+  const debugEl = document.getElementById("sim-debug");
+  function logDebug(stage) {
+    if (!debugEl) return;
+    debugEl.textContent =
+      `stage: ${stage}\n` +
+      `wrap: ${wrap.clientWidth}x${wrap.clientHeight}\n` +
+      `scale: ${frame.style.transform || "none"}\n` +
+      `opacity: ${frame.style.opacity}\n` +
+      `loaded: ${frame.dataset.loaded || "false"}\n` +
+      `t: ${Date.now() % 100000}`;
+  }
+  // -------------------------------------------------------------------
+
   function fit() {
     const w = wrap.clientWidth;
     const h = wrap.clientHeight;
     // Guard: never apply a scale computed from a transient/collapsed 0 size.
-    if (!w || !h) return;
+    if (!w || !h) {
+      logDebug("fit-skip-zero-size");
+      return;
+    }
     const scale = Math.min(w / NATIVE_W, h / NATIVE_H);
     if (scale > 0) {
       frame.style.transform = `scale(${scale})`;
     }
+    logDebug("fit");
   }
 
   function reveal() {
     frame.style.opacity = "1";
+    logDebug("reveal");
   }
 
   fit();
@@ -166,10 +185,99 @@
     new ResizeObserver(fit).observe(wrap);
   }
 
-  frame.addEventListener("load", () => setTimeout(reveal, 350));
+  frame.addEventListener("load", () => {
+    frame.dataset.loaded = "true";
+    logDebug("iframe-load-event");
+    setTimeout(reveal, 350);
+  });
 
-  // Safety net — self-heals if the load event gets missed or something
-  // (dev-server HMR, a stray reflow) resets things after the fact.
-  setTimeout(() => { fit(); reveal(); }, 1000);
+  let loadAttempts = 0;
+
+  function attemptLoad() {
+    loadAttempts++;
+    frame.dataset.loaded = "false";
+    frame.src = "https://krt135.github.io/Fluid-Simulator/?cachebust=" + Date.now();
+    logDebug("attempt-" + loadAttempts);
+  }
+
+  frame.addEventListener("load", () => {
+    frame.dataset.loaded = "true";
+    logDebug("iframe-load-event");
+    setTimeout(reveal, 350);
+  });
+
+  attemptLoad();
+
+  // If load hasn't fired within 3s, treat this attempt as failed/hung and retry.
+  function watchdog() {
+    if (frame.dataset.loaded !== "true" && loadAttempts < 4) {
+      logDebug("watchdog-retry-" + loadAttempts);
+      attemptLoad();
+    }
+  }
+  setInterval(watchdog, 3000);
   setInterval(fit, 1000);
+})();
+
+(function () {
+  const overlay = document.getElementById("modal-overlay");
+  const body = document.getElementById("modal-body");
+  const closeBtn = document.getElementById("modal-close");
+  if (!overlay || !body || !closeBtn) return;
+
+  let lastFocused = null;
+
+  function openModal(contentNode) {
+    body.innerHTML = "";
+    body.appendChild(contentNode);
+    lastFocused = document.activeElement;
+    overlay.classList.add("is-open");
+    closeBtn.focus();
+  }
+
+  function closeModal() {
+    overlay.classList.remove("is-open");
+    if (lastFocused) lastFocused.focus();
+  }
+
+  closeBtn.addEventListener("click", closeModal);
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) closeModal();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && overlay.classList.contains("is-open")) closeModal();
+  });
+
+  // Photos
+  document.querySelectorAll(".plate[data-modal-img]").forEach((plate) => {
+    function open() {
+      const frag = document.createDocumentFragment();
+      const img = document.createElement("img");
+      img.src = plate.dataset.modalImg;
+      img.alt = plate.querySelector("img")?.alt || "";
+      const caption = document.createElement("p");
+      caption.className = "modal-img-caption";
+      caption.textContent = plate.dataset.modalCaption || "";
+      frag.appendChild(img);
+      frag.appendChild(caption);
+      openModal(frag);
+    }
+    plate.addEventListener("click", open);
+    plate.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); }
+    });
+  });
+
+  // Poems
+  document.querySelectorAll(".poem-card[data-modal-target]").forEach((card) => {
+    function open() {
+      const template = document.getElementById(card.dataset.modalTarget + "-full");
+      if (!template) return;
+      openModal(template.content.cloneNode(true));
+    }
+    card.addEventListener("click", open);
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); }
+    });
+  });
 })();
