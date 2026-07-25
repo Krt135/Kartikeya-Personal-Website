@@ -336,3 +336,47 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// ================= UNITY WEBGL GAME MODAL =================
+document.addEventListener("DOMContentLoaded", () => {
+  const openGameBtn = document.getElementById("open-game-btn");
+  const closeGameBtn = document.getElementById("close-game-btn");
+  const gameModal = document.getElementById("game-modal");
+  const gameIframe = document.getElementById("game-iframe");
+
+  if (openGameBtn && gameModal && gameIframe) {
+    
+    // Function to open modal and load game
+    const openGame = () => {
+      // Pull the file path from data-src and inject it to actually load the game
+      gameIframe.src = gameIframe.getAttribute("data-src");
+      gameModal.classList.add("active");
+    };
+
+    // Function to close modal and kill game
+    const closeGame = () => {
+      gameModal.classList.remove("active");
+      // Give the fade-out transition time to finish before killing the iframe
+      setTimeout(() => {
+        gameIframe.src = ""; 
+      }, 300);
+    };
+
+    openGameBtn.addEventListener("click", openGame);
+    closeGameBtn.addEventListener("click", closeGame);
+
+    // Close on dark background click
+    gameModal.addEventListener("click", (e) => {
+      if (e.target === gameModal) {
+        closeGame();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && gameModal.classList.contains("active")) {
+        closeGame();
+      }
+    });
+  }
+});

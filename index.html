@@ -200,23 +200,28 @@
               </div>
             </div>
 
-            <div class="code-panel">
-              <div class="code-panel-head">
-                <span class="code-panel-dots"><span></span><span></span><span></span></span>
-                <span>RollService.cs</span>
-              </div>
-              <pre><code>// Loaded Dice — deterministic RNG bus
-public interface IRollService {
-    RollResult Roll(DiceSet set, LoadProfile load);
-}
+            <div class="game-preview-card" id="open-game-btn" tabindex="0" role="button" aria-label="Play Loaded Dice">
+              <img src="assets/Loaded-Dice.png" alt="Loaded Dice Start Screen" class="game-preview-img"
+                loading="lazy" />
 
-public sealed class RollService : IRollService {
-    private readonly IRandom _rng;
-    public RollResult Roll(DiceSet set, LoadProfile load) =&gt;
-        set.Faces
-           .WeightedSample(_rng, load.Weights)
-           .Compose();
-}</code></pre>
+              <div class="game-preview-overlay">
+                <div class="play-button-wrapper">
+                  <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                  <span>Play WebGL</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="game-modal-overlay" id="game-modal" aria-hidden="true">
+              <div class="game-modal-container">
+                <button class="game-modal-close" id="close-game-btn" aria-label="Close Game">&times;</button>
+                <div class="game-iframe-wrapper">
+                  <iframe id="game-iframe" data-src="LoadedDiceBuild/index.html" title="Loaded Dice WebGL Game"
+                    frameborder="0" allowfullscreen></iframe>
+                </div>
+              </div>
             </div>
           </article>
 

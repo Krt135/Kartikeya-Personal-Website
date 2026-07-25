@@ -1347,3 +1347,133 @@ blockquote.poem {
   white-space: pre-line;
   line-height: 1.7;
 }
+
+/* --- Game Preview Card --- */
+.game-preview-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--ink-15);
+  background: var(--paper);
+  cursor: pointer;
+}
+
+.game-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+/* The Hover Blur Effect */
+.game-preview-card:hover .game-preview-img,
+.game-preview-card:focus-visible .game-preview-img {
+  filter: blur(4px) brightness(0.7);
+  transform: scale(1.02);
+}
+
+.game-preview-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.game-preview-card:hover .game-preview-overlay,
+.game-preview-card:focus-visible .game-preview-overlay {
+  opacity: 1;
+}
+
+.play-button-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+}
+
+.play-icon {
+  width: 48px;
+  height: 48px;
+  transition: transform 0.2s ease;
+}
+
+.game-preview-card:hover .play-icon {
+  transform: scale(1.1);
+}
+
+/* --- Game Modal --- */
+.game-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.game-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.game-modal-container {
+  position: relative;
+  width: 90vw;
+  max-width: 1280px;
+  aspect-ratio: 16 / 9; /* Standard Unity WebGL ratio */
+  background: #000;
+  border-radius: 8px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.8);
+  border: 1px solid var(--ink-15);
+  overflow: hidden;
+}
+
+.game-iframe-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.game-iframe-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.game-modal-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 2.5rem;
+  cursor: pointer;
+  line-height: 1;
+  z-index: 10001;
+}
