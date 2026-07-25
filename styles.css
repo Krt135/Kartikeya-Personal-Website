@@ -693,6 +693,99 @@ button:focus-visible {
   gap: 8px;
 }
 
+/* Maintain container layout while turning it into a flex card link */
+.role-panel-link {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+.role-panel-link:hover {
+  border-color: var(--ink-45);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Image Wrapper and Sizing */
+.role-panel-img-wrap {
+  margin-top: 16px;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--ink-10);
+}
+
+/* Container card setting up exact bounds and relative positioning */
+.role-panel-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  padding: 0 !important; /* Removes padding so image edge-fills completely */
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--ink-15);
+  background: var(--paper);
+  text-decoration: none;
+}
+
+/* Make image cover the entire container box */
+.role-panel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover state: slight blur and subtle zoom */
+.role-panel-card:hover .role-panel-img {
+  filter: blur(3px) brightness(0.85);
+  transform: scale(1.02);
+}
+
+/* Hover Overlay Icon Layer */
+.role-panel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.role-panel-card:hover .role-panel-overlay {
+  opacity: 1;
+}
+
+/* Arrow Icon Styling matching your accent style */
+.external-icon {
+  width: 32px;
+  height: 32px;
+  color: #848a77; /* Lime green accent from your screenshot, or use var(--ink-45) */
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+  transition: transform 0.2s ease;
+}
+
+.role-panel-card:hover .external-icon {
+  transform: translate(2px, -2px);
+}
+
+.role-panel-link:hover .role-panel-img {
+  transform: scale(1.02);
+}
+
 .tracks {
   margin-top: 24px;
   display: grid;
@@ -1113,4 +1206,144 @@ blockquote.poem {
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--ink-50);
+}
+
+/* --- Carousel Layout --- */
+.gallery-carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  width: 100%;
+  padding: 8px 0;
+  /* Hide default scrollbars for a cleaner look */
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Force 4 items to fit perfectly across the screen */
+.carousel-item {
+  flex: 0 0 calc(25% - 12px); 
+  scroll-snap-align: start;
+  aspect-ratio: 3/4; 
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: zoom-in;
+  border: 1px solid var(--ink-15);
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.carousel-item:hover img {
+  transform: scale(1.03);
+}
+
+/* --- Arrows --- */
+.carousel-btn {
+  background: var(--paper);
+  border: 1px solid var(--ink-15);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  z-index: 10;
+  color: var(--ink-80);
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.carousel-btn:hover {
+  background: var(--ink-5);
+  transform: scale(1.05);
+}
+
+/* Pull arrows slightly outside the container */
+.prev-btn { left: -22px; }
+.next-btn { right: -22px; }
+
+/* --- Lightbox Modal --- */
+.lightbox-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.lightbox-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-modal img {
+  max-width: 90%;
+  max-height: 90vh;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 3rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* --- Poem Title Styling --- */
+.poem-title {
+  display: block;
+  font-family: var(--font-display); /* Matches your site's heading font */
+  font-size: 1.25rem;               /* Bigger text size */
+  font-weight: 600;                /* Bold weight */
+  color: var(--ink-90);            /* Distinct dark ink color */
+  margin-bottom: 0.75rem;          /* Spacing below the title */
+  letter-spacing: -0.01em;
+}
+
+/* Modal specific title sizing */
+.modal-title {
+  font-size: 1.6rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Ensures line breaks and stanza spacing in the modal are preserved naturally */
+.modal-poem-text {
+  white-space: pre-line;
+  line-height: 1.7;
 }

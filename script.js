@@ -281,3 +281,58 @@
     });
   });
 })();
+
+// ================= GALLERY CAROUSEL & LIGHTBOX =================
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.getElementById("gallery-track");
+  const prevBtn = document.querySelector(".prev-btn");
+  const nextBtn = document.querySelector(".next-btn");
+
+  // Arrow scrolling logic
+  if (track && prevBtn && nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      // Scrolls right by exactly the width of the visible container
+      track.scrollBy({ left: track.clientWidth, behavior: "smooth" });
+    });
+    
+    prevBtn.addEventListener("click", () => {
+      // Scrolls left by exactly the width of the visible container
+      track.scrollBy({ left: -track.clientWidth, behavior: "smooth" });
+    });
+  }
+
+  // Lightbox interaction logic
+  const modal = document.getElementById("lightbox-modal");
+  const modalImg = document.getElementById("lightbox-img");
+  const closeBtn = document.querySelector(".lightbox-close");
+  const triggers = document.querySelectorAll(".lightbox-trigger");
+
+  if (modal && modalImg && closeBtn) {
+    // Open image
+    triggers.forEach(img => {
+      img.addEventListener("click", () => {
+        modalImg.src = img.src;
+        modal.classList.add("active");
+      });
+    });
+
+    // Close on 'X' click
+    closeBtn.addEventListener("click", () => {
+      modal.classList.remove("active");
+    });
+
+    // Close if user clicks the dark background
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.remove("active");
+      }
+    });
+    
+    // Close on 'Escape' key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        modal.classList.remove("active");
+      }
+    });
+  }
+});
