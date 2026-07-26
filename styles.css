@@ -1477,3 +1477,10 @@ blockquote.poem {
   line-height: 1;
   z-index: 10001;
 }
+
+.carousel-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
