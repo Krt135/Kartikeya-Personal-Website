@@ -918,7 +918,7 @@ blockquote.poem {
 .plates {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 8px;   /* was 16px */
 }
 
 .plate {
@@ -1219,26 +1219,34 @@ blockquote.poem {
 
 .carousel-track {
   display: flex;
-  gap: 16px;
+  gap: 8px;   /* was 16px */
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   width: 100%;
   padding: 8px 0;
-  /* Hide default scrollbars for a cleaner look */
-  -ms-overflow-style: none;  
-  scrollbar-width: none;  
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .carousel-track::-webkit-scrollbar {
   display: none;
 }
 
+.carousel-intro {
+  margin-top: 8px;
+  margin-bottom: 24px;
+  max-width: 560px;
+  color: var(--ink-65);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
 /* Force 4 items to fit perfectly across the screen */
 .carousel-item {
-  flex: 0 0 calc(25% - 12px); 
+  flex: 0 0 calc(33.333% - 6px);
   scroll-snap-align: start;
-  aspect-ratio: 3/4; 
+  aspect-ratio: 3/4;
   border-radius: 8px;
   overflow: hidden;
   cursor: zoom-in;
@@ -1277,6 +1285,21 @@ blockquote.poem {
 .carousel-btn:hover {
   background: var(--ink-5);
   transform: scale(1.05);
+}
+
+@media (max-width: 640px) {
+  .plates {
+    gap: 6px;
+  }
+
+  .carousel-track {
+    gap: 6px;
+  }
+
+  /* 2 photos per view on phones instead of 4 — each one noticeably bigger */
+  .carousel-item {
+    flex: 0 0 calc(50% - 3px);
+  }
 }
 
 /* Pull arrows slightly outside the container */
